@@ -159,6 +159,7 @@ listed_in ILIKE '%documentaries%';
 SELECT * 
   FROM netflix 
   =WHERE director IS NULL;
+```
   
 ### 13. Find how many movies actor 'Salman Khan' appeared inlast 10 years!
 
