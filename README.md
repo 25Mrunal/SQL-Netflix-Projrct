@@ -80,7 +80,7 @@ SELECT
   FROM netflix
   GROUP BY 1
   ORDER BY 2 DESC
-  LIMIT 5
+  LIMIT 5;
 ```
 
 ### 5. Identify the longest movie
@@ -89,7 +89,7 @@ SELECT
 SELECT title 
   FROM netflix 
   WHERE 
-  TYPE='Movie' AND duration = (SELECT MAX(duration) FROM netflix)
+  TYPE='Movie' AND duration = (SELECT MAX(duration) FROM netflix);
 ```
   
 ### 6. Find content added in the last 5 years
@@ -98,7 +98,7 @@ SELECT title
 SELECT  *
   FROM netflix 
   WHERE
-  TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years'
+  TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years';
 ```
 
 ### 7. Find all the movies/TV shows by director 'Rajiv Chilaka'!
@@ -107,7 +107,7 @@ SELECT  *
 SELECT * 
   FROM netflix 
   WHERE director 
-  ILIKE '%Rajiv Chilaka%'
+  ILIKE '%Rajiv Chilaka%';
 ```
   
 ###  8. List all TV shows with more than 5 seasons
@@ -118,7 +118,7 @@ SELECT
   FROM netflix 
   WHERE type = 'TV Show' 
   AND
-  SPLIT_PART(duration, ' ' ,1)::numeric > 5 
+  SPLIT_PART(duration, ' ' ,1)::numeric > 5 ;
 ```
 
 ### 9. Count the number of content items in each genre
@@ -128,7 +128,7 @@ SELECT
   UNNEST(STRING_TO_ARRAY(listed_in, ',')) AS genre,
   COUNT(show_id) as total_content
 FROM netflix
-GROUP BY 1
+GROUP BY 1;
 ```
 
 ### 10.Find each year and the average numbers of content release in India on netflix. return top 5 year with highest avg content release!
@@ -142,7 +142,7 @@ SELECT
   ,2) AS avg_content
 FROM netflix 
 WHERE country='India'
-GROUP BY 1
+GROUP BY 1;
 ```
 
 ### 11. List all movies that are documentaries
@@ -150,7 +150,7 @@ GROUP BY 1
 ```sql
 SELECT * FROM netflix
 WHERE
-listed_in ILIKE '%documentaries%'
+listed_in ILIKE '%documentaries%';
 ```
 
 ### 12. Find all content without a director
@@ -158,7 +158,7 @@ listed_in ILIKE '%documentaries%'
 ```sql
 SELECT * 
   FROM netflix 
-  =WHERE director IS NULL
+  =WHERE director IS NULL;
   
 ### 13. Find how many movies actor 'Salman Khan' appeared inlast 10 years!
 
@@ -167,7 +167,7 @@ SELECT * FROM netflix
   WHERE
   casts ILIKE '%Salman Khan%'
   AND
-  release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10
+  release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10;
 ```
 
 ### 14. Find the top 10 actors who have appeared in the highest number of movies produced in India.
@@ -180,7 +180,7 @@ FROM netflix
 WHERE country ILIKE '%India%'
 GROUP BY 1
 ORDER BY 2 DESC
-LIMIT 10
+LIMIT 10;
 ```
 
 ### 15.Categorize the content based on the presence of the keywords 'kill' and 'violence' in the description field. Label content containing these keywords as 'Bad' and all other content as 'Good'. Count how many items fall into each category.
@@ -202,7 +202,7 @@ SELECT
   category,
   COUNT(*) as total_content
   FROM new_table
-  GROUP BY 1
+  GROUP BY 1;
 ```
 
 ### 16.List the top 5 directors with the highest number of content items on Netflix.
