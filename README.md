@@ -34,18 +34,18 @@ duration varchar(15),
 listed_in varchar(100),	
 description varchar(250)
 );
+```
 
-SELECT * FROM netflix;
+## 20 Business Problrms & Solutions
 
+### 1. Count the number of Movies vs TV Shows
 
--- 20 Business Problrms
--- 1. Count the number of Movies vs TV Shows
-
+```sql
 SELECT 
   type, COUNT(*) AS count_number 
   FROM netflix 
   GROUP BY type;
-
+```
 -- 2. Find the most common rating for movies and TV shows
 
 SELECT 
